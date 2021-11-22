@@ -7,28 +7,30 @@ module.exports = {
     node: true // Defines things like process.env when generating through node
   },
   plugins: [
-    "import",
     "jsx-a11y",
     "promise",
     "unicorn",
     "sonarjs",
+    "jest",
     "eslint-comments",
-    "write-good-comments",
-    "jest"
+    //
+    "import",
+    "write-good-comments"
   ],
   extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:jest/recommended",
-    "plugin:testing-library/react",
-    "prettier",
-    "plugin:prettier/recommended",
     "plugin:promise/recommended",
     "plugin:unicorn/recommended",
     "plugin:sonarjs/recommended",
-    "plugin:eslint-comments/recommended"
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
+    "plugin:eslint-comments/recommended",
+    //
+    "plugin:react-hooks/recommended",
+    "eslint:recommended",
+    "plugin:testing-library/react",
+    "prettier",
+    "plugin:prettier/recommended"
   ],
   parser: "babel-eslint", // Uses babel-eslint transforms.
   parserOptions: {
