@@ -13,7 +13,6 @@ module.exports = {
     "sonarjs",
     "jest",
     "eslint-comments",
-    "functional",
     //
     "import",
     "write-good-comments"
@@ -26,7 +25,6 @@ module.exports = {
     "plugin:jest/recommended",
     "plugin:react/recommended",
     "plugin:eslint-comments/recommended",
-    "plugin:functional/recommended",
     //
     "plugin:react-hooks/recommended",
     "eslint:recommended",
@@ -92,8 +90,10 @@ module.exports = {
     "unicorn/prefer-module": "off",
     "unicorn/filename-case": "off",
     "write-good-comments/write-good-comments": "warn",
-    "functional/functional-parameters" : "warn",
-    "functional/no-expression-statement" : "warn",
+    "react/self-closing-comp": ["error", {
+      "component": true,
+      "html": true
+    }]
   },
   settings: {
     react: {
