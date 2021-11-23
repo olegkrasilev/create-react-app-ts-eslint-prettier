@@ -1,5 +1,9 @@
 import React from "react";
 
-const App = () => <h1>Hello world</h1>;
+const App = () => {
+  const isOleg = false;
+
+  return <h1>Hello world</h1>;
+};
 
 export default App;

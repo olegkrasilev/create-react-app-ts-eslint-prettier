@@ -13,6 +13,7 @@ module.exports = {
     "sonarjs",
     "jest",
     "eslint-comments",
+    "functional",
     //
     "import",
     "write-good-comments"
@@ -25,6 +26,7 @@ module.exports = {
     "plugin:jest/recommended",
     "plugin:react/recommended",
     "plugin:eslint-comments/recommended",
+    "plugin:functional/recommended",
     //
     "plugin:react-hooks/recommended",
     "eslint:recommended",
@@ -52,6 +54,32 @@ module.exports = {
         groups: ["builtin", "external", "index", "sibling", "parent", "internal"]
       }
     ],
+    "padding-line-between-statements": [
+      "error",
+      { blankLine: "never", prev: "import", next: "import" },
+      { blankLine: "always", prev: "*", next: ["return", "function", "if", "export", "switch"] },
+      { blankLine: "always", prev: ["if", "switch"], next: "*" },
+      { blankLine: "always", prev: ["const", "let"], next: "expression" }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        selector: "variable",
+        types: ["boolean"],
+        format: ["PascalCase"],
+        prefix: ["is", "IS_", "should", "has", "can", "did", "will"]
+      },
+      {
+        selector: "interface",
+        format: ["StrictPascalCase"],
+        prefix: ["I"]
+      },
+      {
+        selector: "typeParameter",
+        format: ["PascalCase"],
+        prefix: ["T"]
+      }
+    ],
     "linebreak-style": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
@@ -63,7 +91,9 @@ module.exports = {
     ],
     "unicorn/prefer-module": "off",
     "unicorn/filename-case": "off",
-    "write-good-comments/write-good-comments": "warn"
+    "write-good-comments/write-good-comments": "warn",
+    "functional/functional-parameters" : "warn",
+    "functional/no-expression-statement" : "warn",
   },
   settings: {
     react: {
@@ -79,10 +109,15 @@ module.exports = {
           jsx: true
         },
         ecmaVersion: 2018,
-        sourceType: "module"
+        project: "tsconfig.json",
+        tsconfigRootDir: __dirname,
+        sourceType: "module",
       },
       plugins: ["@typescript-eslint"],
-      extends: ["plugin:@typescript-eslint/recommended"],
+      extends: [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      ],
       // You can add Typescript specific rules here.
       // If you are adding the typescript variant of a rule which is there in the javascript
       // ruleset, disable the JS one.
